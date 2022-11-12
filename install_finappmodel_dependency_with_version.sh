@@ -1,0 +1,1 @@
+cat fin_app_models/requirements_mod.txt | grep -E '^[^# ]' | cut -d# -f1 | xargs -n 1 poetry add

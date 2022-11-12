@@ -1,0 +1,20 @@
+DEBUG : 2022-04-20 09:23:39,374 : [SimulatedBot2.take_action] pred : [0.01680564]
+DEBUG : 2022-04-20 09:23:39,374 : [SimulatedBot2.take_action] pred_return : -0.001480006886814701
+DEBUG : 2022-04-20 09:23:39,374 : [SimulatedBot2.take_action] pred value = 0.016805640406296122, doing nothing
+DEBUG : 2022-04-20 09:23:39,530 : [SimulatedBot2.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:28:40,097 : [SimulatedBot2.take_action] pred : [-0.52760162]
+DEBUG : 2022-04-20 09:28:40,097 : [SimulatedBot2.take_action] pred_return : -0.03259054273404629
+DEBUG : 2022-04-20 09:28:40,097 : [SimulatedBot2.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:28:40,217 : [SimulatedBot2.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:33:40,813 : [SimulatedBot2.take_action] pred : [-0.74742482]
+DEBUG : 2022-04-20 09:33:40,813 : [SimulatedBot2.take_action] pred_return : -0.04515249424639623
+DEBUG : 2022-04-20 09:33:40,813 : [SimulatedBot2.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:33:40,931 : [SimulatedBot2.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:38:41,567 : [SimulatedBot2.take_action] pred : [-0.7443499]
+DEBUG : 2022-04-20 09:38:41,568 : [SimulatedBot2.take_action] pred_return : -0.04497677554170384
+DEBUG : 2022-04-20 09:38:41,568 : [SimulatedBot2.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:38:41,655 : [SimulatedBot2.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:43:42,302 : [SimulatedBot2.take_action] pred : [-0.73969119]
+DEBUG : 2022-04-20 09:43:42,303 : [SimulatedBot2.take_action] pred_return : -0.04471055027467626
+DEBUG : 2022-04-20 09:43:42,303 : [SimulatedBot2.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:43:42,434 : [SimulatedBot2.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0

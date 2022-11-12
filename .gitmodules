@@ -1,0 +1,3 @@
+[submodule "fin_app_models"]
+	path = fin_app_models
+	url = git@github.com:pondelion/FinAppModel.git

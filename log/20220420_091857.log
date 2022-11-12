@@ -1,0 +1,20 @@
+DEBUG : 2022-04-20 09:23:58,844 : [SimulatedBot.take_action] pred : [0.01680564]
+DEBUG : 2022-04-20 09:23:58,845 : [SimulatedBot.take_action] pred_return : -0.001480006886814701
+DEBUG : 2022-04-20 09:23:58,845 : [SimulatedBot.take_action] pred value = 0.016805640406296122, doing nothing
+DEBUG : 2022-04-20 09:23:58,928 : [SimulatedBot.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:28:59,512 : [SimulatedBot.take_action] pred : [-0.52760162]
+DEBUG : 2022-04-20 09:28:59,512 : [SimulatedBot.take_action] pred_return : -0.03259054273404629
+DEBUG : 2022-04-20 09:28:59,512 : [SimulatedBot.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:28:59,588 : [SimulatedBot.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:34:00,180 : [SimulatedBot.take_action] pred : [-0.74742482]
+DEBUG : 2022-04-20 09:34:00,180 : [SimulatedBot.take_action] pred_return : -0.04515249424639623
+DEBUG : 2022-04-20 09:34:00,181 : [SimulatedBot.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:34:00,291 : [SimulatedBot.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:39:00,887 : [SimulatedBot.take_action] pred : [-0.7443499]
+DEBUG : 2022-04-20 09:39:00,887 : [SimulatedBot.take_action] pred_return : -0.04497677554170384
+DEBUG : 2022-04-20 09:39:00,887 : [SimulatedBot.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:39:00,993 : [SimulatedBot.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
+DEBUG : 2022-04-20 09:44:01,512 : [SimulatedBot.take_action] pred : [-0.73969119]
+DEBUG : 2022-04-20 09:44:01,513 : [SimulatedBot.take_action] pred_return : -0.04471055027467626
+DEBUG : 2022-04-20 09:44:01,513 : [SimulatedBot.sell] not enough BTC to sell
+DEBUG : 2022-04-20 09:44:01,630 : [SimulatedBot.dump_current_portfolio] [PORTFOLIO] cash : 500000, btc : 0.0, total_evaluated_cash : 500000.0
