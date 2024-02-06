@@ -11,6 +11,7 @@ crawler = WACrawler()
 while True:
     try:
         crawler.start_crawl()
+        time.sleep(2)
         while crawler.is_crawling:
             time.sleep(1)
     except FailureExceededMaxRetries:

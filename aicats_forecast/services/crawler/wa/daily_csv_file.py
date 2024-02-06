@@ -35,7 +35,7 @@ class DailyCSVFile:
         if self._filepath != self.get_filename():
             self._filepath = self.get_filename()
             self._df_data = self._load_or_create(self._filepath)
-        self._df_data = pd.concat([self._df_data, data]).drop_duplicates(keep='first')
+        self._df_data = pd.concat([self._df_data, data]).reset_index(drop=True).drop_duplicates(keep='first')
         self._df_data.to_csv(self._filepath, index=False, compression='gzip')
 
     def __len__(self):

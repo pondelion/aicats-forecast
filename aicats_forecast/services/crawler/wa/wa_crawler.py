@@ -18,7 +18,7 @@ class WACrawler:
 
     def __init__(self, api_key: str = DEFAULT_API_KEY):
         self._crawling = False
-        self._INTERVAL_SEC = 4*60  #15/30 制限かかる？
+        self._INTERVAL_SEC = 60  # 4*60
         self._fail_cnt = 0
         self._URL = 'https://api.whale-alert.io/v1/transactions'
         self._API_KEY = api_key
@@ -55,6 +55,7 @@ class WACrawler:
         return df.columns.tolist()
 
     def start_crawl(self):
+        self._crawling = True
         threading.Thread(
             target=self._crawl_worker
         ).start()
@@ -64,7 +65,6 @@ class WACrawler:
 
     def _crawl_worker(self):
         print(f'{datetime.now()} start crawling whale alert')
-        self._crawling = True
         cursor = None
         fail_cnt = 0
         columns = self._get_columns()
