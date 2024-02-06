@@ -3,3 +3,4 @@ __pycache__
 .env
 *.pkl
 _description.py
+/log

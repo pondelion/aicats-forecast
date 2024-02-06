@@ -1,5 +1,5 @@
 import json
-import time
+from datetime import datetime, timezone, timedelta
 import threading
 import websocket
 
@@ -26,6 +26,7 @@ class WSTradeAPIClient(object):
         self._csv_repo = repo  # TODO
         self._symbol = symbol
         self._crawling = False
+        self._fail_cnt = 0
 
         self.ws = websocket.WebSocketApp(
             self._url,
@@ -55,23 +56,37 @@ class WSTradeAPIClient(object):
             self._crawling = False
 
     def _on_message(self, ws, message):
-        print_red(f'on_message : {message}')
+        print_red(f'[{datetime.now()}] on_message : {message}')
         data = json.loads(message)
         #print(json.dumps(data, indent=2))
         del data['channel']
+        data['timestamp_saved'] = str(datetime.now(tz=timezone.utc))
         self._csv_repo.append(
             **data
         )
+        self._fail_cnt = 0
 
     def _on_error(self, ws, error):
-        print_red(error)
-        self._csv_repo.flush_file()
-        self._crawling = False
+        print_red(f'on_error : {str(error)}')
+        try:
+            self._csv_repo.flush_file()
+        except Exception as e:
+            print(e)
+        self.stop_crawl()
+        self._fail_cnt += 1
+        # self._crawling = False
+        # raise error
 
     def _on_close(self, ws, close_status_code, close_msg):
         print_red(f'on_close : {close_status_code} : {close_msg}')
-        self._csv_repo.flush_file()
-        self._crawling = False
+        try:
+            self._csv_repo.flush_file()
+        except Exception as e:
+            print(e)
+        # self._crawling = False
+        self.stop_crawl()
+        # raise ConnectionClosed()
+        raise ConnectionClosed()
 
     def _on_open(self, ws):
         print_red('on_open')
@@ -85,3 +100,19 @@ class WSTradeAPIClient(object):
     @property
     def is_crawling(self) -> bool:
         return self._crawling
+
+    def is_maintanance_time(self) -> bool:
+        JST = timezone(timedelta(hours=+9), 'JST')
+        now_dt = datetime.now(JST)
+        if (
+            (now_dt.weekday() == 5)
+            and
+            ((now_dt.hour >= 9) and (now_dt.hour < 11))
+        ):
+            return True
+        else:
+            return False
+
+
+class ConnectionClosed(Exception):
+    pass

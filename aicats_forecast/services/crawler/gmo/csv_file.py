@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 import threading
 import os
@@ -16,7 +16,7 @@ class GMOTradeCsvFile:
         flush_interval: Optional[int] = 100,
         save_dir: Optional[str] = None,
     ):
-        self._COL_NAMES = ['timestamp', 'symbol', 'side', 'price', 'size']
+        self._COL_NAMES = ['timestamp', 'symbol', 'side', 'price', 'size', 'timestamp_saved']
         self._symbol = symbol
         if save_dir is not None:
             self._save_dir = save_dir
@@ -36,12 +36,12 @@ class GMOTradeCsvFile:
     def get_filename(self) -> str:
         return os.path.join(
             self._save_dir,
-            f'{datetime.now().strftime("%Y%m%d")}.csv'
+            f'{datetime.now(tz=timezone.utc).strftime("%Y%m%d")}.csv.gzip'
         )
 
     def _load_or_create(self, filepath: str) -> pd.DataFrame:
         if os.path.exists(filepath):
-            return pd.read_csv(filepath)
+            return pd.read_csv(filepath, compression='gzip')
         else:
             return pd.DataFrame(columns=self._COL_NAMES)
 
@@ -52,10 +52,11 @@ class GMOTradeCsvFile:
         size: float,
         side: str,
         symbol: str,
+        timestamp_saved: str,
         flush: Optional[bool] = True
     ) -> None:
         with self._lock:
-            data = pd.Series([timestamp, symbol, side, price, size], index=self._COL_NAMES)
+            data = pd.Series([timestamp, symbol, side, price, size, timestamp_saved], index=self._COL_NAMES)
             if self._filepath == self.get_filename():
                 self._df = self._df.append(data, ignore_index=True)
                 if flush and len(self._df) % self._flush_interval == 0:
@@ -72,7 +73,8 @@ class GMOTradeCsvFile:
                     self.flush_file()
 
     def flush_file(self):
-        self._df.to_csv(self._filepath, index=False)
+        self._df = self._df.drop_duplicates(keep='first')
+        self._df.to_csv(self._filepath, index=False, compression='gzip')
 
     @property
     def filepath(self) -> str:
